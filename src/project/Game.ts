@@ -11,7 +11,11 @@ export class Game {
         this.drawCircle();
         this.drawSquare();
     }
-
+    /**
+     * This method draws a square
+     * 
+     * 
+     */
     private drawSquare() {
         let graphics:Graphics = new PIXI.Graphics();
 
