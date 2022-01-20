@@ -1,10 +1,13 @@
 import {Application, Graphics} from "pixi.js";
+import { SquareShape } from "./shapes/SquareShape";
 
 export class Game {
     public app: Application;
     constructor() {
         this.app = new Application({width: 800, height: 600, backgroundColor: 0xFFFF00, antialias: true});
         document.body.appendChild(this.app.view);
+        let squareShape:SquareShape = new SquareShape(this.app);
+
     }
 
     public startGame():void{
@@ -14,6 +17,7 @@ export class Game {
         this.drawFourCornerStar();
         this.drawSquareRoundedCorners();
     }
+
     /**
      * This method draws a square
      */
@@ -65,12 +69,16 @@ export class Game {
         graphics.beginFill(0x97d5dd, 1);
         graphics.drawStar(250, 180, 4, 56); // x coord, y coord, corners, size
         graphics.endFill();
+
         // make the star interactive
         graphics.interactive = true;
+        graphics.pivot.x = 2;
+        graphics.pivot.y = 28;
 
-        graphics.addListener('click', (e) => {
+        graphics.on('pointerdown', () => {
             //const clicks = e.detail;
-            graphics.scale.set(1.5);
+            graphics.scale.x *= 1.5;
+            graphics.scale.y *= 1.5;
         })
 
         this.app.stage.addChild(graphics);
