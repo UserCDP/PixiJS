@@ -1,4 +1,5 @@
 import {Application, Graphics} from "pixi.js";
+import { RoundedCornersSquareShape } from "./shapes/RoundedCornersSquareShape";
 import { SquareShape } from "./shapes/SquareShape";
 
 export class Game {
@@ -6,8 +7,8 @@ export class Game {
     constructor() {
         this.app = new Application({width: 800, height: 600, backgroundColor: 0xFFFF00, antialias: true});
         document.body.appendChild(this.app.view);
-        let squareShape:SquareShape = new SquareShape(this.app);
-
+        //let squareShape:SquareShape = new SquareShape(this.app);
+        let roundedSquareShape:RoundedCornersSquareShape = new RoundedCornersSquareShape(this.app);
     }
 
     public startGame():void{

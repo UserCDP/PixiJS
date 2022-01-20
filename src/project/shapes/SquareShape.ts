@@ -5,19 +5,22 @@ export class SquareShape {
     constructor(app:Application) {
         this.appSquareShape = app;
         console.log("Hello from SquareShape class!");
-        this.drawSquare();
+        this.drawSquare(); 
+        let graphics = this.drawSquare();
+        graphics.endFill();
+        this.appSquareShape.stage.addChild(graphics);
     }
 
     /**
     * This method draws a square
     */
-    private drawSquare() {
+    protected drawSquare():Graphics {
         let graphics:Graphics = new PIXI.Graphics();
 
         // Rectangle
         graphics.beginFill(0xDE8079, 0.5);
         graphics.drawRect(100, 50, 100, 100);
-        graphics.endFill();
-        this.appSquareShape.stage.addChild(graphics);
+       
+        return graphics;
     }
 }
